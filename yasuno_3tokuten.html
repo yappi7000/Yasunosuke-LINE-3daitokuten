@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>やすのすけ 3大特典パッケージ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --blue-deep: #1a4fa0; --blue-mid: #2d6ed6; --blue-lite: #5b9bf5;
+    --blue-pale: #e8f1fd; --blue-bg: #f0f6ff; --white: #ffffff;
+    --text-main: #1a2a3a; --text-sub: #4a5a6a;
+    --gold: #f5a623; --gold-lite: #fff3d6;
+    --green: #22a06b; --red: #e53e3e;
+  }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color: var(--text-main); line-height: 1.7; }
+  .hero { background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-lite) 100%); color: white; text-align: center; padding: 48px 24px 40px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.12) 0%, transparent 60%); }
+  .hero-badge { display: inline-block; background: var(--gold); color: #1a1a00; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; padding: 4px 16px; border-radius: 20px; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(20px, 5vw, 32px); font-weight: 900; line-height: 1.4; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  .hero h1 em { font-style: normal; color: #ffe680; }
+  .hero-sub { font-size: 13px; opacity: 0.88; margin-bottom: 18px; }
+  .hero-from { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; padding: 7px 18px; font-size: 13px; font-weight: 500; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 36px 18px 28px; }
+  .intro-box { background: var(--blue-pale); border-left: 4px solid var(--blue-mid); border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 13px; color: var(--text-sub); margin-bottom: 24px; line-height: 1.7; }
+  .chapter { margin-bottom: 22px; }
+  .chapter-header { background: linear-gradient(90deg, var(--blue-mid), var(--blue-lite)); color: white; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 8px 8px 0 0; }
+  .chapter-body { background: var(--blue-bg); border: 1px solid var(--blue-pale); border-top: none; border-radius: 0 0 8px 8px; padding: 4px 14px 8px; }
+  /* ---- CHECK ITEMS ---- */
+  .check-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(45,110,214,0.1); font-size: 13px; cursor: pointer; user-select: none; transition: background 0.15s; border-radius: 4px; }
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { background: rgba(45,110,214,0.04); }
+  .check-box { width: 24px; height: 24px; border: 2px solid var(--blue-mid); border-radius: 6px; flex-shrink: 0; margin-top: 1px; background: white; display: flex; align-items: center; justify-content: center; font-size: 15px; color: var(--green); font-weight: 900; transition: all 0.2s; }
+  .check-item.checked .check-box { background: var(--green); border-color: var(--green); color: white; }
+  .check-item.checked .check-content strong { color: var(--green); }
+  .check-item.checked { opacity: 0.75; }
+  .check-num { font-weight: 700; color: var(--blue-mid); min-width: 26px; flex-shrink: 0; margin-top: 2px; font-size: 12px; }
+  .check-content strong { display: block; font-weight: 700; color: var(--text-main); margin-bottom: 2px; transition: color 0.2s; }
+  .check-content span { font-size: 12px; color: var(--text-sub); }
+  /* ---- SCORE BOX ---- */
+  .score-board { background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid)); color: white; border-radius: 16px; padding: 24px 20px; text-align: center; margin-top: 28px; }
+  .score-board .score-num { font-size: 56px; font-weight: 900; line-height: 1; color: #ffe680; margin: 10px 0 6px; }
+  .score-board .score-label { font-size: 14px; opacity: 0.9; margin-bottom: 14px; }
+  .score-msg { font-size: 14px; line-height: 1.7; background: rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; text-align: left; }
+  /* ---- NG ITEMS ---- */
+  .ng-item { background: white; border: 1px solid var(--blue-pale); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; font-size: 13px; }
+  .ng-title { font-weight: 700; color: var(--blue-deep); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .ng-num { background: var(--blue-mid); color: white; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; }
+  .ng-item p { font-size: 12px; color: var(--text-sub); line-height: 1.65; }
+  /* ---- ROADMAP ---- */
+  .roadmap-chapter { background: white; border: 1px solid var(--blue-pale); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+  .roadmap-header { background: linear-gradient(90deg, var(--blue-deep), var(--blue-mid)); color: white; padding: 10px 16px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .roadmap-header .days { background: rgba(255,255,255,0.25); border-radius: 8px; padding: 2px 10px; font-size: 11px; font-weight: 700; }
+  .roadmap-body { padding: 14px 16px; font-size: 13px; color: var(--text-sub); }
+  .roadmap-item { display: flex; gap: 8px; margin-bottom: 8px; }
+  .roadmap-item:last-child { margin-bottom: 0; }
+  .roadmap-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-lite); flex-shrink: 0; margin-top: 7px; }
+  .roadmap-item strong { color: var(--text-main); font-weight: 700; }
+  /* ---- RESULT BOX ---- */
+  .result-box { background: linear-gradient(135deg, var(--gold-lite), #fffbe8); border: 2px solid var(--gold); border-radius: 12px; padding: 18px 20px; text-align: center; margin-top: 24px; font-size: 14px; }
+  .result-box .result-emoji { font-size: 28px; margin-bottom: 8px; }
+  .result-box p { color: var(--text-main); line-height: 1.7; }
+  .result-box strong { color: #c27800; }
+  /* ---- NOTE CTA ---- */
+  .note-cta { background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid)); color: white; padding: 28px 20px; text-align: center; border-radius: 16px; max-width: 680px; margin: 20px auto; }
+  .note-cta .cta-title { font-size: 16px; font-weight: 900; margin-bottom: 8px; }
+  .note-cta p { font-size: 13px; opacity: 0.88; margin-bottom: 16px; line-height: 1.7; }
+  .note-cta a { display: inline-block; background: var(--gold); color: #1a1a00; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 30px; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+  footer { text-align: center; padding: 24px 16px; font-size: 11px; color: #aaa; background: var(--blue-bg); border-top: 1px solid var(--blue-pale); margin-top: 10px; }
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .num-badge { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-mid), var(--blue-lite)); color: white; font-size: 11px; font-weight: 900; flex-shrink: 0; box-shadow: 0 4px 12px rgba(45,110,214,0.3); line-height: 1.2; text-align: center; }
+  .section-title-wrap h2 { font-size: clamp(15px, 3.5vw, 19px); font-weight: 900; color: var(--blue-deep); line-height: 1.4; }
+  .section-title-wrap .subtitle { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+  .tokuten-section + .tokuten-section { border-top: 2px dashed var(--blue-pale); }
+  .nav-strip { display: flex; gap: 10px; padding: 18px 16px; background: white; justify-content: center; flex-wrap: wrap; border-bottom: 2px solid var(--blue-pale); }
+  .nav-pill { background: var(--blue-pale); color: var(--blue-deep); font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 20px; text-decoration: none; }
+  @media(max-width:480px){ .hero{padding:32px 14px 28px;} .wrap{padding:24px 12px 20px;} }
+</style>
+<script>
+(function(){
+  var total = 20;
+  function getScore(){
+    return document.querySelectorAll('.check-item.checked').length;
+  }
+  function getMsg(n){
+    if(n === 0) return '🎉 素晴らしい！心の距離感が非常に健全です。この調子で穏やかな人間関係を守り続けてください。';
+    if(n <= 2) return '✅ ほぼ問題なし。少し気になる点はありますが、意識するだけで十分改善できます。';
+    if(n <= 5) return '⚠️ 要注意。無意識のうちに相手を消耗させているかもしれません。今日から少しずつ意識してみてください。';
+    if(n <= 10) return '😢 危険信号。あなたの周りの人はすでに静かに距離を置き始めているかもしれません。早めに意識を変えましょう。';
+    return '🚨 緊急事態。大切な人が今まさに「静かに離れる準備」をしている可能性があります。今すぐ行動を変えてください。';
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.check-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        item.classList.toggle('checked');
+        var box = item.querySelector('.check-box');
+        box.textContent = item.classList.contains('checked') ? '✓' : '';
+        var n = getScore();
+        var numEl = document.getElementById('scoreNum');
+        var msgEl = document.getElementById('scoreMsg');
+        if(numEl) numEl.textContent = n;
+        if(msgEl) msgEl.textContent = getMsg(n);
+      });
+    });
+  });
+})();
+</script>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🎁 LINE登録者限定 3大特典パッケージ</div>
+  <h1>「本音」と送ってくれた<br>あなただけへ🎉<br><em>やすのすけからの<br>プレゼント</em></h1>
+  <p class="hero-sub">61歳。2度の離婚・倒産・貯金ゼロを経て辿り着いた<br>「静かに消耗しない生き方」の全部をお渡しします。</p>
+  <div class="hero-from">✍️ やすのすけ｜@Kyani_8p</div>
+</div>
+
+<div style="background:#f0f6ff; padding:24px 20px; text-align:center;">
+  <p style="font-size:14px; color:#4a5a6a; max-width:520px; margin:0 auto;">
+    ご登録ありがとうございます！🙏<br>
+    下記の<strong style="color:#1a4fa0;">3つの特典</strong>を、今すぐ読んでいただけます。<br>
+    どれも私が身をもって体験した<strong style="color:#1a4fa0;">「失敗と気づき」</strong>が詰まっています。
+  </p>
+</div>
+
+<div class="nav-strip">
+  <a class="nav-pill" href="#tokuten1">📋 特典①チェックシート</a>
+  <a class="nav-pill" href="#tokuten2">⚠️ 特典②致命的行動20</a>
+  <a class="nav-pill" href="#tokuten3">🗺️ 特典③30日ロードマップ</a>
+</div>
+
+<!-- ===== 特典① ===== -->
+<div class="wrap tokuten-section" id="tokuten1">
+  <div class="section-label">
+    <div class="num-badge">特典<br>①</div>
+    <div class="section-title-wrap">
+      <h2>📋 人が静かに離れていかないための<br>「心の距離感」チェックシート20</h2>
+      <div class="subtitle">👆 項目をタップするとレ点がつきます ✅</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    💬 人が離れていくとき、誰も理由を教えてくれません。怒ることもなく、静かにそっと去っていくだけ。<br>
+    このチェックシートで、あなたが気づかぬうちに相手を消耗させていないか確認してみてください。
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header">💬 第1章：会話の距離感｜言葉で相手を疲弊させていないか</div>
+    <div class="chapter-body">
+      <div class="check-item"><div class="check-box"></div><div class="check-num">1.</div><div class="check-content"><strong>「でも」「だって」から会話を始めていないか</strong><span>相手の意見に対し、無意識に否定・自己防衛から入っていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">2.</div><div class="check-content"><strong>求められていない「正論アドバイス」を押し付けていないか</strong><span>ただ聞いてほしいだけなのに「こうすればいい」とジャッジしていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">3.</div><div class="check-content"><strong>過去の栄光や「昔の苦労話」をループしていないか</strong><span>「俺の若い頃は〜」を何度も繰り返して退屈させていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">4.</div><div class="check-content"><strong>非を認める前に「言い訳」を探していないか</strong><span>プライドが邪魔して、素直に「ごめん」「ありがとう」が言えなくなっていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">5.</div><div class="check-content"><strong>「どうせ俺なんて」自虐で相手に気を遣わせていないか</strong><span>自虐は相手に精神的介護を強いる最も重い言葉です。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">6.</div><div class="check-content"><strong>「察してちゃん」になっていないか</strong><span>不機嫌な空気や無言の圧力で、周囲のエネルギーを奪っていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">7.</div><div class="check-content"><strong>第三者の陰口を「本音トーク」と勘違いしていないか</strong><span>「ここだけの話」は信用をじわじわゼロにします。</span></div></div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header">🤝 第2章：関係性の距離感｜相手の領域に踏み込みすぎていないか</div>
+    <div class="chapter-body">
+      <div class="check-item"><div class="check-box"></div><div class="check-num">8.</div><div class="check-content"><strong>親しくなった途端、プライベートにズカズカ踏み込んでいないか</strong><span>家族・収入・過去など相手の聖域に無神経に立ち入っていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">9.</div><div class="check-content"><strong>「なんでもいいよ」の丸投げを優しさと思っていないか</strong><span>決める責任を相手に押し付ける思考放棄になっていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">10.</div><div class="check-content"><strong>相手の「時間」を奪っている意識が希薄になっていないか</strong><span>用件のない長電話・終わりの見えないLINEを付き合わせていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">11.</div><div class="check-content"><strong>「よかれと思って」過干渉になっていないか</strong><span>相手の課題や失敗する権利まで奪っていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">12.</div><div class="check-content"><strong>相手が離れる気配を「忙しいせい」と言い訳していないか</strong><span>連絡頻度が減ったのは「静かに引いたサイン」かもしれないリアルを直視できているか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">13.</div><div class="check-content"><strong>過去に与えた「恩」をずっと覚えていないか</strong><span>「あの時助けてやったのに」が無言のプレッシャーになっていないか。</span></div></div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header">👑 第3章：大人の品格と心の守り方｜見栄とプライドに振り回されていないか</div>
+    <div class="chapter-body">
+      <div class="check-item"><div class="check-box"></div><div class="check-num">14.</div><div class="check-content"><strong>立場が下の人へ横柄な態度をとっていないか</strong><span>店員・タクシー運転手への振る舞いが、あなたの「本性」のジャッジポイント。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">15.</div><div class="check-content"><strong>「若さ」への執着が言葉の端々に透けていないか</strong><span>実年齢を認められず、若さへの嫉妬が嫌味として出ていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">16.</div><div class="check-content"><strong>お金の支払いでケチ臭さやドヤ顔を出していないか</strong><span>出すならスマートに、出さないなら綺麗に。お金の切れ目は人の切れ目。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">17.</div><div class="check-content"><strong>「SNSの反応」に一喜一憂して目の前の人を蔑ろにしていないか</strong><span>画面の数字に囚われ、身近な人への感謝を忘れていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">18.</div><div class="check-content"><strong>感情の起伏をそのまま出して、周囲に機嫌を取らせていないか</strong><span>イライラやため息を隠さず、子供じみたコントロールをしていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">19.</div><div class="check-content"><strong>「現在地」を直視することを恐れていないか</strong><span>見栄のために身の丈を超えた出費をしていないか。</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-num">20.</div><div class="check-content"><strong>「大きく稼ぐ」より「二度と退場しないこと」に意識を向けられているか</strong><span>まず自分の心とお金を「守る」という現実に足がついているか。</span></div></div>
+    </div>
+  </div>
+
+  <!-- スコアボード -->
+  <div class="score-board">
+    <div style="font-size:15px; font-weight:700; opacity:0.9;">📊 あなたは何個当てはまりましたか？</div>
+    <div class="score-num" id="scoreNum">0</div>
+    <div class="score-label">個 / 20個中</div>
+    <div class="score-msg" id="scoreMsg">👆 上の項目をタップしてチェックしてみてください！</div>
+  </div>
+</div>
+
+<!-- ===== 特典② ===== -->
+<div class="wrap tokuten-section" id="tokuten2">
+  <div class="section-label">
+    <div class="num-badge">特典<br>②</div>
+    <div class="section-title-wrap">
+      <h2>⚠️ 大人が一瞬で信用を失う<br>「やってはいけない20の致命的行動」</h2>
+      <div class="subtitle">周囲が黙って離れていく本当の理由 😶</div>
+    </div>
+  </div>
+  <div class="intro-box">😰 恐ろしいことに、周囲の人はあなたを怒ったり指摘したりしてくれません。ただ静かに離れていくだけ。<br>2度の離婚・倒産・貯金ゼロを経験した私が身をもって学んだ、絶対にやってはいけない20の行動です。</div>
+
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">1</span>「でも」「だって」から会話を始める 🚫</div><p>無意識に自己防衛や否定から入る人は「自分が正しい」と証明しようとしています。相手は「話しても疲れるだけ」と心を閉ざします。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">2</span>相手の間違いをその場で論破する 🚫</div><p>正論での論破は、相手に恥をかかせるだけで信頼関係を完全に破壊します。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">3</span>店員・立場が下の人への横柄な態度 🚫</div><p>「自分より弱い立場の人への態度」こそが、あなたの人間性の底値としてジャッジされています。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">4</span>「若さ」や「外見」への執着が透けて見える言動 🚫</div><p>実年齢を受け入れられない姿は、周囲に気まずさを与えます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">5</span>陰口・愚痴を「本音」と勘違いして話す 🚫</div><p>「ここだけの話」は「自分もいない所で悪口を言われている」と相手に察させ、警戒を生みます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">6</span>自分の非を認めず言い訳を先に探す 🚫</div><p>非を認めない大人は「器の小さい人」として見限られます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">7</span>「なんでもいいよ」という丸投げ 🚫</div><p>決める責任を相手に押し付けているだけの思考放棄です。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">8</span>相手の時間を奪っている意識の欠如 🚫</div><p>用件もないのに続く長電話・LINEは、静かにブロックされる原因になります。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">9</span>お金の支払いでドヤ顔・ケチ臭さを出す 🚫</div><p>お金の使い方にはその人の器が出ます。出すなら気持ちよくスマートに。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">10</span>「どうせ俺なんて」自虐で気を遣わせる 🚫</div><p>精神的介護を強制する最も嫌われる行動。周囲のエネルギーを吸い取ります。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">11</span>求められていないアドバイスを押し売りする 🚫</div><p>大人が語るべきは、求められた時の知恵であり、自己満足の説教ではありません。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">12</span>「過去の肩書・昔の栄光」を何度も繰り返す 🚫</div><p>現在に誇れるものがないと白状しているようなもの。冷ややかな目で見られます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">13</span>不機嫌さをアピールして気を遣わせる 🚫</div><p>ため息・物音・無言の圧力——自分の感情を周囲に管理させる幼稚な行動です。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">14</span>相手のプライベートに無神経に踏み込む 🚫</div><p>距離感を間違えた大人は一瞬で心のシャッターを下ろされます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">15</span>「忙しい」を理由に約束・返信を蔑ろにする 🚫</div><p>「忙しい」は免罪符になりません。静かに縁を切られます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">16</span>新しい価値観やテクノロジーを頭ごなしに否定する 🚫</div><p>思考が停止した頑固な老人として、周囲から会話の対象外にされます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">17</span>奢られること・助けてもらうことを「当然」と思う 🚫</div><p>感謝のない大人に、二度と手が差し伸べられることはありません。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">18</span>SNSで他者への攻撃的な発言をする 🚫</div><p>ネット上の攻撃性は現実の人間関係にも透けて見えます。品格を疑われます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">19</span>健康管理を放棄して体調不良をアピールし続ける 🚫</div><p>自己管理ができない大人は、周囲に精神的負担と実務的リスクを感じさせます。</p></div>
+  <div class="ng-item"><div class="ng-title"><span class="ng-num">20</span>「今さら学んでも遅い」と諦めて現状維持に逃げる 🚫</div><p>その卑屈なオーラは、周囲のポジティブな人々を静かに遠ざけます。</p></div>
+
+  <div class="result-box"><div class="result-emoji">💡</div><p>無意識にやってしまっているものはなかったでしょうか？<br><strong>人が離れる理由は、いつも「見栄」や「小さなプライド」の中に隠れています。</strong><br><br>気づけた今が、スタートラインです。✨</p></div>
+</div>
+
+<!-- ===== 特典③ ===== -->
+<div class="wrap tokuten-section" id="tokuten3">
+  <div class="section-label">
+    <div class="num-badge">特典<br>③</div>
+    <div class="section-title-wrap">
+      <h2>🗺️ 人生後半を穏やかに生きるための<br>「守りのマインド」構築30日ロードマップ</h2>
+      <div class="subtitle">5日刻み・全6章で二度と破綻しない土台を作る 🏗️</div>
+    </div>
+  </div>
+  <div class="intro-box">🎯 人生後半の最重要戦略は「一発逆転で大きく稼ぐこと」ではありません。<br><strong>「二度と人生の舞台から退場しないこと」</strong>——つまり【徹底的な守り】です。<br>20年かけて辿り着いた、精神的にも現実的にも破綻しないためのロードマップをお渡しします。</div>
+
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">1〜5日目</span>📦 第1章：過去の埋葬と「見栄」の断捨離</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>過去の栄光の断捨離</strong>｜「昔はこうだった」というプライドをすべて捨て、等身大の今を受け入れる。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「よく見られたい」欲の遮断</strong>｜見栄のための無駄な出費・無理な人付き合いをすべてストップ。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>現在地の直視</strong>｜貯金・健康・人間関係の「不都合な現実」をノートに書き出し、そこからスタート。</div></div></div></div>
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">6〜10日目</span>😤 第2章：感情のコントロールと「不機嫌」の卒業</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「察してちゃん」からの脱却</strong>｜自分の機嫌は自分でとる、大人の最低限のルールを徹底。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「でも」「だって」の禁止</strong>｜まず「なるほど」と受け止める練習を毎日続ける。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>自虐と説教の封印</strong>｜今日から完全に封印。言いそうになったら深呼吸。</div></div></div></div>
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">11〜15日目</span>🛡️ 第3章：人間関係の「聖域化」と静かな距離の取り方</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「静かなフェードアウト」の実践</strong>｜消耗させる人間関係は波風立てずにそっと距離を置く。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>エネルギーの集中</strong>｜広く浅い人脈は不要。本音で話せる数少ない人だけに注力。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「孤独」を味方につける</strong>｜孤独を「誰にも邪魔されない穏やかで自由な時間」と捉え直す。</div></div></div></div>
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">16〜20日目</span>🎩 第4章：他者尊重と「大人のマナー」の再構築</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>相手の「時間」を尊重する</strong>｜ダラダラ長電話・LINEをやめ、相手の時間を奪わない配慮を徹底。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>立場が下の人への敬意</strong>｜店員・タクシー運転手に誰よりも丁寧で紳士的な態度をとる。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「よかれと思って」の干渉をやめる</strong>｜信頼して「見守る」大人の距離感を覚える。</div></div></div></div>
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">21〜25日目</span>💰 第5章：退場しないための「現実的な基盤」作り</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「守りの現金」を積む計画</strong>｜派手な投資の前に、生活防衛資金をコツコツと積み上げる。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>見栄のないスモールビジネス</strong>｜自分の手の届く範囲でコツコツと継続できる事業の足元を固める。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>身の丈に合った生活の最適化</strong>｜固定費を見直し、ミニマムでも豊かに暮らせる体制を作る。</div></div></div></div>
+  <div class="roadmap-chapter"><div class="roadmap-header"><span class="days">26〜30日目</span>🌅 第6章：「足るを知る」穏やかな生き方の定着</div><div class="roadmap-body"><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>日々の小さな感謝の発見</strong>｜温かいご飯・静かな空間・小さな成長に心から感謝をノートに記録。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>「大きく稼ぐ」より「退場しない」の誓い</strong>｜今日も足元がついていることに最大の価値を置く。</div></div><div class="roadmap-item"><div class="roadmap-dot"></div><div><strong>本音で生きる心地よさの体感</strong>｜飾るのをやめ、等身大の自分で生きることの楽さを噛み締めて30日完了。🎉</div></div></div></div>
+
+  <div class="result-box"><div class="result-emoji">🏁</div><p>人生後半の「守り」とは、後ろ向きな意味ではありません。<br><strong>二度と倒れないための、最も強固な土台作りです。</strong><br><br>30日後、あなたは驚くほど静かで穏やかな日々を手に入れているはずです。🌟</p></div>
+</div>
+
+<div style="padding:0 16px;">
+  <div class="note-cta">
+    <div class="cta-title">📖 やすのすけのnoteも読んでみてください</div>
+    <p>私が実際にすべてを失ったどん底からどのように「静かに消耗しない生き方」に辿り着いたのか——。その生々しいリアルな物語と、心の守り方の本質を、包み隠さず書き綴りました。</p>
+    <a href="https://note.com/deep_acacia8369/n/n7a76d43a7c24" target="_blank">👇 【61歳のリアルな告白】を読む</a>
+  </div>
+</div>
+<footer>© やすのすけ｜@Kyani_8p ｜ 無断転載禁止<br>このコンテンツはLINE公式アカウント登録者向けの限定配布資料です。</footer>
+</body>
+</html>
